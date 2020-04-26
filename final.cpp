@@ -345,7 +345,13 @@ LLNode* LinkedList::searchList(int key) {
     return ptr;
 }
 
- bool HashTavle::insertItem(int key)//tbh not sure exactly what the boolean is for
+unsigned int HashTable::hashFunction(int key)
+{
+    int index = key % tableSize;//result of remainder of key/tableSize
+    return index;
+}
+
+ bool HashTable::insertItem(int key)//tbh not sure exactly what the boolean is for
  {
      //uh im just saying if i could add it then it returns true?
      bool return_Val = false;
