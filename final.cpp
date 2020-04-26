@@ -344,3 +344,28 @@ LLNode* LinkedList::searchList(int key) {
     }
     return ptr;
 }
+
+hashNode* HashTable:: searchItem(int key)
+{
+    int bucket = hashFunction(key);//unsigned a problem? ... this is where we find the bucket its stored in
+    bool foundKey = false;
+    hashNode* ptr = HashTable[bucket]; pointer that points to first item in the bucket
+    while(ptr != NULL) //scan entire list (as long as ptr points to something)
+    {
+        if(ptr->key == key)//seeing if the keys match
+        {
+            foundKey = true;//mark that we found a match
+        }
+        ptr = ptr->next;//run through to next 
+    }
+    if(foundKey == true)//if we kow we found the value then return the ptr val
+    {
+        return ptr;//ptr should be pointng to the right one
+    }
+    else
+    {
+        //should I return null? 
+        return NULL; //i decided to but we will have to check for it when we use this function...
+        //possibly w an if statement... if (returnVal != NULL)... blah blah blah
+    }
+}
