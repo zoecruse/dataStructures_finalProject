@@ -1,5 +1,6 @@
 #ifndef final_HPP
 #define final_HPP
+#include <string>
 //hellooooooooo
 using namespace std;
 
@@ -69,13 +70,7 @@ class BST{
 };
 #endif
 
-#ifndef HASH_HPP
-#define HASH_HPP
 
-#include <string>
-
-
-using namespace std;
 
 struct hashNode
 {
