@@ -345,6 +345,18 @@ LLNode* LinkedList::searchList(int key) {
     return ptr;
 }
 
+HashTable::HashTable(int bsize)//uh prob not done?..but is the constructor
+{
+    this->tableSize = bsize;//tbh idk if hte this is necessary or wrong
+    this->table = new hashNode *[bsize]; //... this creates an array of ptrs to hashNodes!
+    for(int i = 0 ; i < tableSize; i++)//setting everything to null
+    {
+        table[i] = new hashNode;
+        table[i] -> key = NULL;
+        table[i] -> next = NULL;
+    }
+}
+
 unsigned int HashTable::hashFunction(int key)
 {
     int index = key % tableSize;//result of remainder of key/tableSize
