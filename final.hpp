@@ -97,6 +97,9 @@ public:
 
     void printTable();
     int getNumOfCollision();
+    //hi im adding in the next one
+    int NumberOfItemsInIndex(int index);
+    //^^ I dont know if I can like actually put it here but id have to send in the hashtable if i dont
 
     hashNode* searchItem(int key);
 };
