@@ -68,14 +68,14 @@ class BST{
         bool valid(Node*, int, int); //DONE
 
 };
-#endif
+#endif//this might be an issue...
 
 
 
 struct hashNode
 {
     int key;
-    struct node* next;
+    struct hashNode* next;
 };
 
 class HashTable
@@ -83,9 +83,9 @@ class HashTable
     int tableSize;  // No. of buckets (linked lists)
 
     // Pointer to an array containing buckets
-    node* *table;
+    hashNode* *table;
     int numOfcolision =0;
-    node* createNode(int key, node* next);
+    hashNode* createNode(int key, hashNode* next);
 public:
     HashTable(int bsize);  // Constructor
 
@@ -98,7 +98,7 @@ public:
     void printTable();
     int getNumOfCollision();
 
-    node* searchItem(int key);
+    hashNode* searchItem(int key);
 };
 
 #endif
