@@ -345,6 +345,71 @@ LLNode* LinkedList::searchList(int key) {
     return ptr;
 }
 
+ bool HashTavle::insertItem(int key)//tbh not sure exactly what the boolean is for
+ {
+     //uh im just saying if i could add it then it returns true?
+     bool return_Val = false;
+     int index = hashFunction(key);
+     if(HashTable[index]->key == NULL)//if its empty
+     {
+         HashTable[index]->key = key;//overwrite with key given
+        //i do believe the next function should be done in the constructor?
+        //bc the array should just have a bunch of nulls in it??
+        //wait maybe nvm bc its for the ll duh
+        return_Val = true;
+     }
+     else//meaning there is already a value in its spot
+     {
+         hashNode* ptr = HashTable[index];// first item in bucket
+         hashNode* n = new hashNode;//new item
+         n->key = key; //initializing key
+         n->next = NULL; // initializing next to nothing
+         //next need to add to end of linked list in the bucket
+         while(ptr->!= NULL)//while next element != NULL
+         {
+             ptr = ptr->next;//go through to next
+         }
+         //ptr is now pointing to last item in list
+         ptr->next = n; // linking the last item in list to newly created item
+        return_Val = true;
+
+     }
+     
+ }
+
+int HashTable::NumberOfItemsInIndex(int index)
+{
+    int count = 0;
+    if(HashTable[index]->key == NULL)
+    {
+        return count;//return zero bc nothing in it
+    }
+    else
+    {
+        count++;//count first item
+        hashNode* ptr = HashTable[index];//points to being of list thats in tht bucket
+        while(ptr->next != NULL) //as long as next ptr is not nothing
+        {
+            count++; //increment counter
+            ptr=ptr->next; // move ptr to next item
+        }
+    }
+    return count;//by now we have all items accounted for in that list
+}
+void HashTable:: printTable()
+{
+    int num; //num of elements in each buckets
+    for(int i = 0; i < tableSize; i++)//remember tableSize is the no. of buckets (linked lists)
+    {
+        num = NumberOfItemsInIndex(i);//assign number to num
+        cout << "------------------\n";
+        cout << "index = " << i << endl;
+        cout << HashTable[i]->key << endl;
+        cout << "# of items = " << number << endl;
+        cout << "------------------\n";
+    }
+}
+
 hashNode* HashTable:: searchItem(int key)
 {
     int bucket = hashFunction(key);//unsigned a problem? ... this is where we find the bucket its stored in
@@ -356,7 +421,7 @@ hashNode* HashTable:: searchItem(int key)
         {
             foundKey = true;//mark that we found a match
         }
-        ptr = ptr->next;//run through to next 
+        ptr = ptr->next;
     }
     if(foundKey == true)//if we kow we found the value then return the ptr val
     {
